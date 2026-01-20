@@ -1,6 +1,48 @@
 .bg-c{
     background-color: #1A0B2E;
 }
+.btn-border {
+  position: relative;
+  padding: 12px 24px;
+  font-weight: bold;
+  color: #22c55e;
+  background: transparent;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+/* animated border */
+.btn-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    transparent,
+    #22c55e
+  );
+  background-size: 300% 300%;
+  animation: borderRotate 2s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
 @media screen and (max-width: 576px){
     .display-none{
         display: none;
